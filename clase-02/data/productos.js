@@ -5,4 +5,4 @@ const productos = [
   {id: 4, nombre: "Café Doble", precio: 250},
   {id: 5, nombre: "Café Lagrima", precio: 200}
 ];
-module.exports = productos;
+export default productos;

@@ -1,4 +1,4 @@
-function createPage(titulo, contenido) {
+export function createPage(titulo, contenido) {
     let html = ""
     html += '<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">'
     html += '<title>'+titulo+'</title>'
@@ -52,7 +52,7 @@ function createPage(titulo, contenido) {
     return html
 }
 
-function createProductList(productos){
+export function createProductList(productos){
     let html = "<table>"
     html += "<tr><th>ID</th><th>Nombre</th><th>Precio</th></tr>"
     productos.forEach(cafe => {
@@ -62,4 +62,5 @@ function createProductList(productos){
     return html
 }
 
-module.exports = {createPage, createProductList}
+/*
+export {createPage, createProductList}*/
