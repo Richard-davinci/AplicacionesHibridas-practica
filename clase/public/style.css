@@ -1,16 +1,147 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #2c3e50, #34495e);
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1d3557, #457b9d);
     color: #fff;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
+    min-height: 100vh;
 }
 
+/* Header Navigation */
+header {
+    width: 100%;
+    background: #1d3557;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 1.2em;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #0ec49f;
+}
+
+/* Animated underline effect */
+nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #0ec49f;
+    transition: width 0.3s;
+    margin: 0 auto;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Page titles */
 h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #f39c12;
+    font-size: 3em;
+    color: #0ec49f;
+    margin-top: 20px;
+    text-shadow: 2px 2px 5px #000;
+}
+
+/* Main Content */
+main {
+    flex-grow: 1;
+    margin: 20px;
+}
+
+main img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 1em;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+/* Formulario */
+div {
+    background: #2d4059;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #0ec49f;
+}
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: #e9ecef;
+    color: #333;
+    font-size: 1em;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form textarea:focus {
+    box-shadow: 0 0 8px rgba(244, 162, 97, 0.8);
+}
+
+form textarea {
+    resize: none;
+}
+
+form input[type="submit"] {
+    background: #0ec49f;
+    color: #fff;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background: #0ec49f;
+}
+
+form input[type="submit"]:active {
+    background: #dd4b3e;
+    transform: scale(0.98);
 }
