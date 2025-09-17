@@ -1,5 +1,6 @@
 import express from "express";
 import {readFile} from "node:fs/promises";
+import {createPage} from "./pages/utils.js";
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.get("/", async (req, res) => {
                 html += `<li>${producto.modelo}</li>`
             })
             html += "</ul>"
-            res.send(html)
+            res.send(createPage("Listado de productos", html))
         }
 )
 })

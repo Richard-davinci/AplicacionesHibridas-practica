@@ -45,7 +45,7 @@ export function createPage(titulo, contenido) {
     </style>
   </head>
   <body>
-  <h1>Mi espectacular pagina web!</h1>
+  <h1>${titulo}</h1>
     `
     html += contenido
     html += '</body></html>'
