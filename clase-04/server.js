@@ -1,7 +1,8 @@
 import express from "express";
 
 const app = express()
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true })) //middenware
+app.use(express.json()) //postman
 
 app.get('/', (req, res) => {
   console.log("Hola", req.query)
