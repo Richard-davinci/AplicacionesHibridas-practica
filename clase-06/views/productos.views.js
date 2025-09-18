@@ -42,17 +42,35 @@ export function formularioNuevoProducto() {
   html += "<div><input type='number' name='precio' placeholder='precio' /></div>";
   html += "<div><input type='submit' value='Guardar'/></div>";
   html += "</form>"
-  html += `<a class="nav-link" href="/">Volver</a>`;
+  html += `<a class="nav-link" href="/productos">Volver</a>`;
   return createPage("Nuevo producto", html);
 }
 
-export function formularioEditarProducto(producto){
+export function formularioEditarProducto(producto) {
   let html = `<form action='/productos/editar/${producto.id}' method='post' >`;
   html += `<div><input type='text' name='marca' placeholder='marca' value="${producto.marca}" /></div>`;
   html += `<div><input type='text' name='modelo' placeholder='modelo' value="${producto.modelo}" /></div>`;
   html += `<div><input type='number' name='precio' placeholder='precio' value="${producto.precio}" /></div>`;
   html += "<div><input type='submit' value='Editar'/></div>";
   html += "</form>"
-  html += `<a class="nav-link" href="/productos">Volver</a>`;
+  html += `<a href="/productos">Volver</a>`;
   return createPage("Editar producto", html);
+}
+
+export function formularioBorrarProducto(producto) {
+  let html = `<form action='/productos/borrar/${producto.id}' method='post' >`;
+  html += `<div>${producto.marca}</div>`;
+  html += `<div>${producto.modelo}</div>`;
+  html += `<div>${producto.precio}</div>`;
+  html += "<div><input type='submit' value='Borrar'/></div>";
+  html += "</form>"
+  html += `<a href="/productos">Volver</a>`;
+  return createPage("Borrar producto", html);
+}
+
+export function borrarExito(id) {
+  let html = ""
+  html += "<p>Producto borrado correctamente</p>"
+  html += `<a href="/productos">Volver</a>`;
+  return createPage("Producto borrado correctamente", html)
 }
