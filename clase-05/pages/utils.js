@@ -7,7 +7,7 @@ export function createPage(titulo, contenido) {
       body {
         font-family: Arial, sans-serif;
         background: linear-gradient(135deg, #2c3e50, #34495e);
-        color: #fff;              
+          
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -42,6 +42,54 @@ export function createPage(titulo, contenido) {
         color: #2c3e50;
         font-weight: bold;
       }     
+      /* Estilo de la lista de detalles */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 400px;
+            border: 2px solid #2c3e50;
+            border-radius: 5px;
+            background: #FFFFFF;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        ul li {
+            padding: 15px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        ul li:last-child {
+            border-bottom: none;
+        }
+        
+        ul li strong {
+            color: #2c3e50;
+        }
+        
+        /* Botón de navegación */
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            background: #2c3e50;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            margin: 0 20px;
+        }
+        
+        a:hover {
+            background: #34495e;
+        }
+        
+        a:active {
+            background: #1d3557;
+            transform: scale(0.98);
+        }
+
     </style>
   </head>
   <body>
