@@ -69,3 +69,24 @@ export function borrarProducto(id){
     return id
   });
 }
+
+export function actualizarProduct(producto){
+  console.log("Llego a guardar", producto)
+  return getProductos().then( async (productos) => {
+    const nuevoListado = productos.map( p => {
+      if( p.id === producto.id ){
+        return {
+          id: p.id,
+          marca: producto.marca || p.marca,
+          modelo: producto.modelo || p.modelo,
+          precio: producto.precio || p.precio
+        }
+      }
+      return p
+    } )
+    console.log("Guardando", nuevoListado)
+    await writeFile("./data/productos.json", JSON.stringify(nuevoListado))
+
+    return producto
+  });
+}

@@ -16,3 +16,48 @@ export function getProductoById(req, res){
       }
     } )
 }
+
+export function createProduct(req, res){
+  const producto = {
+    marca: req.body.marca,
+    modelo: req.body.modelo,
+    precio: req.body.precio
+  }
+  services.guardarProducto(producto)
+    .then( (nuevoProducto) => res.status(201).json(nuevoProducto) )
+    .catch( err => res.status(500).json({message: err}) )
+}
+
+export function deleteProduct(req, res){
+  const id = req.params.id
+  services.borrarProducto(id)
+    .then( (idBorrado) => res.status(202).json({message: `el id:${idBorrado} se elimino correctamente.`}) )
+    .catch( (err) => res.status(500).json({message: `el id:${id} NO se elimino.`}) )
+}
+
+export function reemplazarProduct(req, res){
+  const id = req.params.id
+  const producto = {
+    id: id,
+    marca: req.body.marca,
+    modelo: req.body.modelo,
+    precio: req.body.precio
+  }
+  services.editarProducto(producto)
+    .then( productoEditado => res.status(202).json(productoEditado) )
+    .catch( err => res.status(500).json({message: "No se pudo actualizar."}) )
+}
+
+export function actualizarProduct(req, res){
+  const id = req.params.id
+  const producto = {
+    id: id,
+    marca: req.body.marca,
+    modelo: req.body.modelo,
+    precio: req.body.precio
+  }
+  services.actualizarProduct(producto)
+    .then( productoEditado => res.status(202).json(productoEditado) )
+    .catch( err => res.status(500).json({message: err}) )
+
+}
