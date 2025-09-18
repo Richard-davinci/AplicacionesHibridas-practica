@@ -31,3 +31,21 @@ export function guardarProducto(req, res){
   service.guardarProducto(producto)
     .then( productoGuardado => res.send( views.createDetailPage(productoGuardado) ) )
 }
+
+export function formularioEditarProducto(req, res){
+  const id = req.params.id
+  service.getProductoById(id)
+    .then( (producto) => res.send(views.formularioEditarProducto(producto)) )
+}
+
+export function editarProducto(req, res){
+  const id = req.params.id
+  const producto = {
+    id: id,
+    marca: req.body.marca,
+    modelo: req.body.modelo,
+    precio: req.body.precio
+  }
+  service.editarProducto(producto)
+    .then( productoEditado => res.send(views.createDetailPage(productoEditado)))
+}

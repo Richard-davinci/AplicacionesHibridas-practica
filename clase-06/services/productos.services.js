@@ -10,7 +10,7 @@ export async function getProductoById(id) {
   return getProductos().then((productos) => {
     let producto;
     for (let i = 0; i < productos.length; i++) {
-      if (productos[i].id == id) {
+      if (productos[i].id === id) {
         producto = productos[i];
       }
     }
@@ -28,3 +28,13 @@ export function guardarProducto(producto){
     return nuevoProducto
   });
 }
+export function editarProducto(producto){
+  return getProductos().then( async (productos) => {
+
+    const nuevoListado = productos.filter( p => p.id !== producto.id )
+    nuevoListado.push(producto)
+    await writeFile("./data/productos.json", JSON.stringify(nuevoListado))
+    return producto
+  });
+}
+

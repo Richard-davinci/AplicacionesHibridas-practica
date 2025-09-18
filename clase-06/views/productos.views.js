@@ -1,10 +1,16 @@
-
 import {createPage} from "../pages/utils.js";
 
 export function createProductosListPage(productos) {
   let html = "<ul>";
   productos.forEach((producto) => {
-    html += `<li>${producto.modelo} <a href="/productos/${producto.id}">Ver</a></li>`;
+    html += `<li>
+              <span>${producto.modelo}</span>
+              <div class="actions">
+                      <a href="/productos/${producto.id}">Ver</a> | 
+                      <a href="/productos/editar/${producto.id}">Editar</a> | 
+                      <a href="/productos/borrar/${producto.id}">Borrar</a>
+              </div>
+            </li>`;
   });
   html += "</ul>";
 
@@ -18,7 +24,7 @@ export function createDetailPage(producto) {
   html += `<li>Modelo: ${producto.modelo}</li>`;
   html += `<li>Precio: ${producto.precio}</li>`;
   html += "</ul>";
-  html += `<a href="/productos">Volver</a>`;
+  html += `<a class="nav-link" href="/productos">Volver</a>`;
   return createPage(producto.modelo, html);
 }
 
@@ -29,7 +35,7 @@ export function errorPage() {
   return createPage("404", html);
 }
 
-export function formularioNuevoProducto(){
+export function formularioNuevoProducto() {
   let html = "<form action='/productos/nuevo' method='post' >";
   html += "<div><input type='text' name='marca' placeholder='marca' /></div>";
   html += "<div><input type='text' name='modelo' placeholder='modelo' /></div>";
@@ -38,4 +44,15 @@ export function formularioNuevoProducto(){
   html += "</form>"
   html += `<a class="nav-link" href="/">Volver</a>`;
   return createPage("Nuevo producto", html);
+}
+
+export function formularioEditarProducto(producto){
+  let html = `<form action='/productos/editar/${producto.id}' method='post' >`;
+  html += `<div><input type='text' name='marca' placeholder='marca' value="${producto.marca}" /></div>`;
+  html += `<div><input type='text' name='modelo' placeholder='modelo' value="${producto.modelo}" /></div>`;
+  html += `<div><input type='number' name='precio' placeholder='precio' value="${producto.precio}" /></div>`;
+  html += "<div><input type='submit' value='Editar'/></div>";
+  html += "</form>"
+  html += `<a class="nav-link" href="/productos">Volver</a>`;
+  return createPage("Editar producto", html);
 }

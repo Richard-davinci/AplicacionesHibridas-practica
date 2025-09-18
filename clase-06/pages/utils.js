@@ -24,35 +24,55 @@ export function createPage(titulo, contenido) {
       }
 
       
-      /* Estilo de la lista de detalles */
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px auto;
-            max-width: 400px;
-            border: 2px solid #2c3e50;
-            border-radius: 5px;
-            background: #FFFFFF;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      ul {
+          list-style: none;
+          padding: 0;
+          margin: 20px auto;
+          max-width: 600px;
+          border: 2px solid #2c3e50;
+          border-radius: 5px;
+          background: #FFFFFF;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         ul li {
-            padding: 15px 20px;
-            border-bottom: 1px solid #ccc;
+          padding: 15px 20px;
+          border-bottom: 1px solid #ccc;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
         
         ul li:last-child {
-            border-bottom: none;
+          border-bottom: none;
         }
         
         ul li strong {
-            color: #2c3e50;
+          color: #2c3e50;
+        }
+        
+        .actions {
+          display: flex;
+          gap: 10px;
+        }
+        
+        .actions a {
+          padding: 5px 10px;
+          text-decoration: none;
+          color: white;
+          background: #2c3e50;
+          border-radius: 5px;
+          font-size: 0.9em;
+          transition: background 0.3s ease;
+        }
+        
+        .actions a:hover {
+          background: #34495e;
         }
         
         /* Botón de navegación */
         a {
             display: inline-block;
-            margin-top: 20px;
             padding: 10px 20px;
             text-decoration: none;
             background: #2c3e50;
@@ -60,7 +80,7 @@ export function createPage(titulo, contenido) {
             font-weight: bold;
             border-radius: 5px;
             transition: background 0.3s ease;
-            margin: 0 20px;
+            margin: 0 5px;
         }
         
         a:hover {
