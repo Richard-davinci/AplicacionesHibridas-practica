@@ -4,6 +4,8 @@ import * as controller from '../controllers/productos.controller.js'
 const route = express.Router()
 
 route.get("/productos", controller.getProductos)
+route.get("/productos/nuevo", controller.formularioNuevoProducto)
+route.post("/productos/nuevo", controller.guardarProducto)
 route.get("/productos/:id", controller.getProductoById)
 
 export default route

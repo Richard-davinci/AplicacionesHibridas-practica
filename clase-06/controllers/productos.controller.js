@@ -17,3 +17,17 @@ export function getProductoById(req, res) {
     }
   });
 }
+
+export function formularioNuevoProducto(req, res){
+  res.send( views.formularioNuevoProducto() )
+}
+
+export function guardarProducto(req, res){
+  const producto = {
+    marca: req.body.marca,
+    modelo: req.body.modelo,
+    precio: req.body.precio
+  }
+  service.guardarProducto(producto)
+    .then( productoGuardado => res.send( views.createDetailPage(productoGuardado) ) )
+}

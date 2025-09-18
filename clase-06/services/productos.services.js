@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import {readFile, writeFile} from "node:fs/promises";
 
 export async function getProductos() {
   return readFile("./data/productos.json", "utf-8")
@@ -15,5 +15,16 @@ export async function getProductoById(id) {
       }
     }
     return producto;
+  });
+}
+export function guardarProducto(producto){
+  return getProductos().then( async (productos) => {
+    const nuevoProducto = {
+      id: productos.length + 1,
+      ...producto
+    }
+    productos.push(nuevoProducto)
+    await writeFile("./data/productos.json", JSON.stringify(productos))
+    return nuevoProducto
   });
 }
