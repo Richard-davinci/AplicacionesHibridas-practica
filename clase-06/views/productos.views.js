@@ -6,9 +6,9 @@ export function createProductosListPage(productos) {
     html += `<li>
               <span>${producto.modelo}</span>
               <div class="actions">
-                      <a href="/productos/${producto.id}">Ver</a> | 
-                      <a href="/productos/editar/${producto.id}">Editar</a> | 
-                      <a href="/productos/borrar/${producto.id}">Borrar</a>
+                      <a href="/productos/${producto._id}">Ver</a> | 
+                      <a href="/productos/editar/${producto._id}">Editar</a> | 
+                      <a href="/productos/borrar/${producto._id}">Borrar</a>
               </div>
             </li>`;
   });
@@ -47,7 +47,7 @@ export function formularioNuevoProducto() {
 }
 
 export function formularioEditarProducto(producto) {
-  let html = `<form action='/productos/editar/${producto.id}' method='post' >`;
+  let html = `<form action='/productos/editar/${producto._id}' method='post' >`;
   html += `<div><input type='text' name='marca' placeholder='marca' value="${producto.marca}" /></div>`;
   html += `<div><input type='text' name='modelo' placeholder='modelo' value="${producto.modelo}" /></div>`;
   html += `<div><input type='number' name='precio' placeholder='precio' value="${producto.precio}" /></div>`;
@@ -58,7 +58,7 @@ export function formularioEditarProducto(producto) {
 }
 
 export function formularioBorrarProducto(producto) {
-  let html = `<form action='/productos/borrar/${producto.id}' method='post' >`;
+  let html = `<form action='/productos/borrar/${producto._id}' method='post' >`;
   html += `<div>${producto.marca}</div>`;
   html += `<div>${producto.modelo}</div>`;
   html += `<div>${producto.precio}</div>`;

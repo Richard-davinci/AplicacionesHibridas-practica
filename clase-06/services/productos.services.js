@@ -1,92 +1,34 @@
 import { readFile, writeFile } from "node:fs/promises";
 
+import { MongoClient} from "mongodb";
+
+const client = new MongoClient("mongodb+srv://admin:admin@hibridas-clase.zemfk6l.mongodb.net/")
+
+const db= client.db("hibridas");
+
 export async function getProductos( eliminado = true ) {
-  return readFile("./data/productos.json", "utf-8")
-    .then((data) => JSON.parse(data))
-    .then( productos => {
-      if( eliminado == true ){
-        return productos.filter( p => p.eliminado != true )
-      }else{
-        return productos
-      }
-    } )
-    .catch((err) => []);
+  await client.connect()
+  return db.collection("componentes").find().toArray()
 }
 
 export async function getProductoById(id) {
-  return getProductos().then((productos) => {
-    let producto;
-    for (let i = 0; i < productos.length; i++) {
-      if (productos[i].id == id) {
-        producto = productos[i];
-      }
-    }
-    return producto;
-  });
+  await client.connect()
+  return db.collection("componentes").findOne({ _id: new ObjectId(id) })
 }
 
 export function guardarProducto(producto){
-  return getProductos().then( async (productos) => {
-
-    const nuevoProducto = {
-      id: productos.length + 1,
-      ...producto
-    }
-
-    productos.push(nuevoProducto)
-
-    await writeFile("./data/productos.json", JSON.stringify(productos))
-
-    return nuevoProducto
-  });
+  return db.collection("componentes").insertOne(producto)
 }
 
 export function editarProducto(producto){
-  return getProductos().then( async (productos) => {
-
-    const nuevoListado = productos.filter( p => p.id != producto.id )
-
-    nuevoListado.push(producto)
-
-    await writeFile("./data/productos.json", JSON.stringify(nuevoListado))
-
-    return producto
-  });
+  return db.collection("componentes").replaceOne({ _id: new ObjectId(id), producto })
 }
 
 export function borrarProducto(id){
-  return getProductos().then( async (productos) => {
-
-    const nuevoListado = productos.map( p => {
-      if( p.id == id ){
-        p.eliminado = true
-      }
-      return p
-    } )
-
-    await writeFile("./data/productos.json", JSON.stringify(nuevoListado))
-
-    return id
-  });
+  return db.collection("componentes").deleteOne({ _id: new ObjectId(id) })
 }
 
 export function actualizarProduct(producto){
   console.log("Llego a guardar", producto)
-  return getProductos().then( async (productos) => {
-    const nuevoListado = productos.map( p => {
-      if( p.id === producto.id ){
-        return {
-          id: p.id,
-          marca: producto.marca || p.marca,
-          modelo: producto.modelo || p.modelo,
-          precio: producto.precio || p.precio
-        }
-      }
-      return p
-    } )
-    console.log("Guardando", nuevoListado)
-    await writeFile("./data/productos.json", JSON.stringify(nuevoListado))
-
-    return producto
-  });
+  return db.collection("componentes").updateOne({ _id: new ObjectId(id) }, { $set: producto })
 }

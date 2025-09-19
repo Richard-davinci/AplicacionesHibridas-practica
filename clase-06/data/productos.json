@@ -1,1 +1,1 @@
-[{"id":1,"marca":"AMDe","modelo":"Ryzen 5 5600X","precio":"20000"},{"id":2,"marca":"Intel","modelo":"Core i5 12400F","precio":18000},{"id":3,"marca":"AMD","modelo":"Ryzen 7 5800X","precio":30000}]
+[{"_id":"68cc6aa79e2d29c292fd8dae","id":1,"marca":"AMDe","modelo":"Ryzen 5 5600X","precio":"20000"},{"_id":"68cc6aa79e2d29c292fd8daf","id":2,"marca":"Intel","modelo":"Core i5 12400F","precio":18000},{"_id":"68cc6aa79e2d29c292fd8db0","id":3,"marca":"AMD","modelo":"Ryzen 7 5800X","precio":30000},{"id":4,"marca":"qweqweqw","modelo":"fff","precio":"32323"}]
